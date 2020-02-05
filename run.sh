@@ -16,10 +16,10 @@ function run() {
     go build
     
     # The CSV columns will be in the same order as specified here
-    #pv $input | ./mysqldump2csv --columns "name,anothercolumn,created_at" > $output
+    pv $input | ./mysqldump2csv --columns "name,anothercolumn,created_at" > $output
 
     # give enough tmp space
-    TMPDIR=/home/magnus sort -u $output -o $uniq
+    TMPDIR=/tmp sort -u $output -o $uniq
 }
 
 cleanup_files
